@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 interface State {
   lastkey: string | null;
@@ -21,7 +21,7 @@ export class App extends Component<{}, State> {
 
   handleDocumentRightClick = (event: KeyboardEvent): void => {
     this.setState({ lastkey: event.key });
-    console.log(event.key);
+    // console.log(event.key);
   };
 
   componentDidMount(): void {
@@ -38,7 +38,9 @@ export class App extends Component<{}, State> {
     return (
       <div className="App">
         <p className="App__message">
-          The last pressed key is {lastkey ? `[${lastkey}]` : 'Enter'}
+          {lastkey
+            ? `The last pressed key is [${lastkey}]`
+            : 'Nothing was pressed yet'}
         </p>
       </div>
     );
